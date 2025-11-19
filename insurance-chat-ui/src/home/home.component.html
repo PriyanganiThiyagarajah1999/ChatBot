@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <div class="chat-window">
+    <div *ngFor="let msg of messages" [ngClass]="msg.sender">
+      <div class="bubble">
+        <strong *ngIf="msg.sender === 'bot'">🤖</strong>
+        <strong *ngIf="msg.sender === 'user'">🧑</strong>
+        {{ msg.text }}
+        <small *ngIf="msg.cached" class="cached-tag">(cached)</small>
+        <small *ngIf="msg.source && !msg.cached" class="source-tag">
+          [{{ msg.source }}]
+        </small>
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="loading">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  </div>
+
+  <form (submit)="sendMessage()" class="input-box">
+    <input
+      type="text"
+      [(ngModel)]="userInput"
+      name="message"
+      placeholder="Type your question..."
+      autocomplete="off"
+      required
+    />
+    <button type="submit" [disabled]="loading">Send</button>
+  </form>
+</div>
