@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+ai_service/venv/
+venv/
+
+# Node (Angular + backend)
+insurance-chat-ui/node_modules/
+web_service/node_modules/
+
+# Environment files
+.env
+ai_service/.env
+web_service/.env
+insurance-chat-ui/.env
+
+# Other
+*.log
